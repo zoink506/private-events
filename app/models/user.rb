@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :username, :email, :password, :password_confirmation, presence: true
   validates :email, uniqueness: true
   validates :username, uniqueness: true
+
+  has_many :events, foreign_key: "creator_id", class_name: "Event"
 end

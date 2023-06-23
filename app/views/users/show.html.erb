@@ -1,0 +1,15 @@
+<h1>USER SHOW PAGE</h1>
+<div><%= @user.username %></div>
+<div><%= @user.email %></div>
+
+<div>
+  <h2><%= @user.username %>'s Listed Events: </h2>
+  <%= @user.events.each do |ev| %>
+    <div>
+      <div><%= ev.title %></div>
+      <div><%= ev.body %></div>
+      <div><%= ev.date %></div>
+      <div><%= ev.location %></div>
+    </div>
+  <% end %>
+</div>

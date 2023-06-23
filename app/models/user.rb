@@ -8,5 +8,9 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :username, uniqueness: true
 
+  # Creator association
   has_many :events, foreign_key: "creator_id", class_name: "Event"
+
+  # Attendees association
+  has_many :events, through: :enrollments
 end

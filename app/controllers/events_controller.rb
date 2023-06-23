@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :logged_in?, except: [:index, :show]
+  before_action :require_login, except: [:index, :show]
 
   def index
     @events = Event.all.includes(:creator)
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
       params.require(:event).permit(:title, :body, :location, :date)
     end
 
-    def logged_in?
+    def require_login
       if !current_user.present?
         flash[:alert] = "You must be logged in to view this page"
         redirect_to root_path

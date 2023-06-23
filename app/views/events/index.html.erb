@@ -1,0 +1,10 @@
+<h1>EVENT INDEX PAGE</h1>
+
+<div>
+  <% @events.each do |ev| %>
+    <div>
+      <%= render partial: "shared/display-event", locals: { :ev => ev } %>
+      <div><%= link_to "Show Details", event_path(ev) %></div>
+    </div>
+  <% end %>
+<div>

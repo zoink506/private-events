@@ -1,0 +1,27 @@
+<h1>EVENT CREATION FORM</h1>
+
+<%= form_with model: @event do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div>
+    <%= f.label :date %>
+    <%= f.date_field :date, min: Date.today %>
+  </div>
+
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body, cols: 35, rows: 8 %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -3,6 +3,7 @@ class EnrollmentsController < ApplicationController
 
   def create
     p "current user id: #{current_user.id}"
+    p "current event: #{params[:event_id]}"
   end
 
   private

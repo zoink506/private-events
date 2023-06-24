@@ -1,9 +1,10 @@
 <h1>EVENT SHOW PAGE</h1>
 <%= render partial: "shared/display-event", locals: { :ev => @event } %>
 
-<form action="/enrollments" method="post">
-  <input type="submit" value="Attend this event">
-</form>
+<%= form_with url: enrollments_path, method: :post do |f| %>
+  <%= f.hidden_field :event_id, value: params[:id] %>
+  <%= f.submit value: "Attend this event"  %>
+<% end %>
 
 <h2>Others going to this event: </h2>
 <ul>

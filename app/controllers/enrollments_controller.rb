@@ -3,7 +3,7 @@ class EnrollmentsController < ApplicationController
 
   def create
     # TO DO
-    #   - Check if the enrollment already exists before saving
+    #   - Check if the current user posted the event before being allowed to enrol in it
     @enrollment = Enrollment.new(user_id: current_user.id, event_id: params[:event_id])
 
     # check the current user's enrollments to see if they have previously enrolled for this specific event

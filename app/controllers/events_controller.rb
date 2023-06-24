@@ -28,11 +28,4 @@ class EventsController < ApplicationController
     def event_parameters
       params.require(:event).permit(:title, :body, :location, :date)
     end
-
-    def require_login
-      if !current_user.present?
-        flash[:alert] = "You must be logged in to view this page"
-        redirect_to root_path
-      end
-    end
 end

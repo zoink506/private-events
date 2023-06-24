@@ -1,6 +1,10 @@
 <h1>EVENT SHOW PAGE</h1>
 <%= render partial: "shared/display-event", locals: { :ev => @event } %>
 
+<form action="/enrollments" method="post">
+  <input type="submit" value="Attend this event">
+</form>
+
 <h2>Others going to this event: </h2>
 <ul>
   <% @event.attendees.each do |att| %>

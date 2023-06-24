@@ -4,6 +4,8 @@ class EnrollmentsController < ApplicationController
   def create
     # TO DO
     #   - Check if the current user posted the event before being allowed to enrol in it
+    #     if current_user.id == @enrollment.event.id
+
     @enrollment = Enrollment.new(user_id: current_user.id, event_id: params[:event_id])
 
     # check the current user's enrollments to see if they have previously enrolled for this specific event
@@ -12,7 +14,7 @@ class EnrollmentsController < ApplicationController
     end
 
     # if the user has not previously enrolled with this event, proceed with saving the enrollment
-    if !enr_find
+    if !enr_find || current_user.id != @enrollment.event.creator.id
       if @enrollment.save
         flash[:notice] = "Congratulations, you are now attending this event!"
       else

@@ -1,10 +1,31 @@
 <h1>EVENT INDEX PAGE</h1>
 
-<div>
-  <% @events.each do |ev| %>
-    <div>
+<% if !@events_today.empty? %>
+  <div>
+    <h2>Today's events: </h2>
+    <% @events_today.each do |ev| %>
       <%= render partial: "shared/display-event", locals: { :ev => ev } %>
-      <div><%= link_to "Show Details", event_path(ev) %></div>
-    </div><br>
-  <% end %>
-<div>
+      <div><%= link_to "Show Details", event_path(ev) %></div><br>
+    <% end %>
+  </div>
+<% end %>
+
+<% if !@events_future.empty? %>
+  <div>
+    <h2>Future events: </h2>
+      <% @events_future.each do |ev| %>
+      <%= render partial: "shared/display-event", locals: { :ev => ev } %>
+      <div><%= link_to "Show Details", event_path(ev) %></div><br>
+    <% end %>
+  </div>
+<% end %>
+
+<% if !@events_past.empty? %>
+  <div>
+    <h2>Past events: </h2>
+      <% @events_past.each do |ev| %>
+      <%= render partial: "shared/display-event", locals: { :ev => ev } %>
+      <div><%= link_to "Show Details", event_path(ev) %></div><br>
+    <% end %>
+  </div>
+<% end %>

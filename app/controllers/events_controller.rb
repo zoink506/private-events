@@ -3,6 +3,10 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all.includes(:creator)
+
+    @events_past = @events.select { |ev| ev.date < Date.today }
+    @events_future = @events.select { |ev| ev.date > Date.today }
+    @events_today = @events.select { |ev| ev.date == Date.today }
   end
 
   def show

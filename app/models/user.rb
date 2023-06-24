@@ -12,5 +12,6 @@ class User < ApplicationRecord
   has_many :events, foreign_key: "creator_id", class_name: "Event"
 
   # Attendees association
-  has_many :events, through: :enrollments
+  has_many :enrollments
+  has_many :attended_events, through: :enrollments, source: :event
 end

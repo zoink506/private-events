@@ -18,7 +18,11 @@
   <h2><%= @user.username %> is attending these events: </h2>
   <ul>
     <% @user.attended_events.each do |ev| %>
-      <li><%= ev.title %> <%= link_to "See Details", event_path(ev) %></li>
+      <li>
+        <%= ev.title %>
+        <%= render partial: "shared/event-future-past", locals: { ev: ev } %>
+        <%= link_to "See Details", event_path(ev) %>
+      </li>
     <% end %>
   </ul>
 </div>

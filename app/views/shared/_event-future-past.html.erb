@@ -1,0 +1,7 @@
+<% if ev.date > Date.today %>
+  (future event)
+<% elsif ev.date < Date.today %>
+  (past event)
+<% else %>
+  (today)
+<% end %>

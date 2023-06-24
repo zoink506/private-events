@@ -14,7 +14,7 @@ class EnrollmentsController < ApplicationController
     end
 
     # if the user has not previously enrolled with this event, proceed with saving the enrollment
-    if !enr_find || current_user.id != @enrollment.event.creator.id
+    if !enr_find && current_user.id != @enrollment.event.creator.id
       if @enrollment.save
         flash[:notice] = "Congratulations, you are now attending this event!"
       else

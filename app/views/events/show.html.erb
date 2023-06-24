@@ -9,6 +9,6 @@
 <h2>Others going to this event: </h2>
 <ul>
   <% @event.attendees.each do |att| %>
-    <li><%= att.username %></li>
+    <li><%= link_to att.username, user_path(att) %></li>
   <% end %>
 </ul>

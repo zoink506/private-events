@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   resources :events, only: [:index, :show, :new, :create]
   resources :users, only: [:show]
+  resources :enrollments, only: [:create]
 end

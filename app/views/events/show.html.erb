@@ -6,6 +6,13 @@
   <%= f.submit value: "Attend this event"  %>
 <% end %>
 
+<% if current_user == @event.creator %>
+  <%= link_to "Delete this article", event_path(@event), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  } %>
+<% end %>
+
 <h2>Others going to this event: </h2>
 <ul>
   <% @event.attendees.each do |att| %>

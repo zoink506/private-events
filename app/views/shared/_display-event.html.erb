@@ -2,4 +2,4 @@
 <div><%= ev.body %></div>
 <div><strong>Location:</strong> <%= ev.location %></div>
 <div><strong>Scheduled Date:</strong> <%= ev.date %> <%= render partial: "shared/event-future-past", locals: { ev: ev } %></div>
-<div><strong>Posted by:</strong> <%= ev.creator.username %></div>
+<div><strong>Posted by:</strong> <%= ev.creator.username %> <%= " (You)" if ev.creator == current_user %></div>

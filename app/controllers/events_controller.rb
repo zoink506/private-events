@@ -30,6 +30,20 @@ class EventsController < ApplicationController
     redirect_to user_path(current_user), status: :see_other
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update(event_parameters)
+      redirect_to event_path(@event)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   private
 
     def event_parameters

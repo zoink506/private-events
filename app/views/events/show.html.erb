@@ -1,16 +1,24 @@
 <h1>EVENT SHOW PAGE</h1>
 <%= render partial: "shared/display-event", locals: { :ev => @event } %>
 
-<%= form_with url: enrollments_path, method: :post do |f| %>
-  <%= f.hidden_field :event_id, value: params[:id] %>
-  <%= f.submit value: "Attend this event"  %>
+<% if current_user != @event.creator %>
+  <%= form_with url: enrollments_path, method: :post do |f| %>
+    <%= f.hidden_field :event_id, value: params[:id] %>
+    <%= f.submit value: "Attend this event"  %>
+  <% end %>
 <% end %>
 
 <% if current_user == @event.creator %>
-  <%= link_to "Delete this article", event_path(@event), data: {
-    turbo_method: :delete,
-    turbo_confirm: "Are you sure?"
-  } %>
+  <div>
+    <%= link_to "Delete this event", event_path(@event), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    } %>
+  </div>
+
+  <div>
+    <%= link_to "Edit this event", edit_event_path(@event) %>
+  </div>
 <% end %>
 
 <h2>Others going to this event: </h2>

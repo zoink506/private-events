@@ -1,11 +1,16 @@
 <h1>EVENT SHOW PAGE</h1>
 <%= render partial: "shared/display-event", locals: { :ev => @event } %>
 
-<% if current_user != @event.creator %>
-  <%= form_with url: enrollments_path, method: :post do |f| %>
-    <%= f.hidden_field :event_id, value: params[:id] %>
-    <%= f.submit value: "Attend this event"  %>
+<% if current_user != @event.creator && current_user.present? %>
+  <% existing_enrollment = current_user.enrollments.any? { |enr| enr.event_id == @event.id } %>
+
+  <% if !existing_enrollment %>
+    <%= form_with url: enrollments_path, method: :post do |f| %>
+      <%= f.hidden_field :event_id, value: params[:id] %>
+      <%= f.submit value: "Attend this event"  %>
+    <% end %>
   <% end %>
+
 <% end %>
 
 <% if current_user == @event.creator %>

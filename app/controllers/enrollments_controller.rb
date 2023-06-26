@@ -28,6 +28,9 @@ class EnrollmentsController < ApplicationController
     redirect_to event_path(params[:event_id])
   end
 
+  def destroy
+  end
+
   private
   def enrollment_params
     

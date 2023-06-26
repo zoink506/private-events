@@ -8,5 +8,5 @@ Rails.application.routes.draw do
 
   resources :events, only: [:index, :show, :new, :create, :destroy, :edit, :update]
   resources :users, only: [:show]
-  resources :enrollments, only: [:create]
+  resources :enrollments, only: [:create, :destroy]
 end
